@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivity : ComponentActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
-
+  // This is a overight funtion
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login) // Set the login screen layout
