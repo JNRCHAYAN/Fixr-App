@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "518480195367",
+    "project_id": "fixr-3bb33",
+    "storage_bucket": "fixr-3bb33.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518480195367:android:06ad279302676490840302",
+        "android_client_info": {
+          "package_name": "com.JNRChayan.fixr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8p5Z63a9zPAGfdofFeWyUdxQ7OEt-ttY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518480195367:android:45811e6d40ba823d840302",
+        "android_client_info": {
+          "package_name": "com.example.fixr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8p5Z63a9zPAGfdofFeWyUdxQ7OEt-ttY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518480195367:android:bbb646f30847c8ed840302",
+        "android_client_info": {
+          "package_name": "com.jnrchayan.fixr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8p5Z63a9zPAGfdofFeWyUdxQ7OEt-ttY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
