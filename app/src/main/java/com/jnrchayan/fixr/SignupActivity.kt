@@ -44,7 +44,7 @@ class SignupActivity : ComponentActivity() {
                             databaseRef.child(it).setValue(user).addOnCompleteListener { dbTask ->
                                 if (dbTask.isSuccessful) {
                                     Toast.makeText(this, "SignUp Successfully", Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this, mainhome::class.java)
+                                 val intent = Intent(this, mainhome::class.java)
                                     startActivity(intent)
                                 } else {
                                     Toast.makeText(this, dbTask.exception.toString(), Toast.LENGTH_SHORT).show()

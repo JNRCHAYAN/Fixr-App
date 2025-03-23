@@ -40,7 +40,10 @@
             android:name=".mainhome"
             android:exported="false"
             />
-
+        <activity
+            android:name=".test"
+            android:exported="false"
+            />
 
     </application>
 
