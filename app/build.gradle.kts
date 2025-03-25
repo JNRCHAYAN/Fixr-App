@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.circleimageview)
     implementation(libs.androidx.drawerlayout)
     implementation(libs.material)
     testImplementation(libs.junit)
