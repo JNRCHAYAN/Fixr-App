@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
 
         // Delay for 5 seconds and then move to HomeActivity
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, mainhome::class.java)
+            val intent = Intent(this, first_home::class.java)
             startActivity(intent)
             finish() // Close splash screen activity
         }, 1000) // 5000ms = 5 seconds
