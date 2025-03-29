@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.circleimageview)
     implementation(libs.androidx.drawerlayout)
     implementation(libs.material)
+    implementation(libs.androidx.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

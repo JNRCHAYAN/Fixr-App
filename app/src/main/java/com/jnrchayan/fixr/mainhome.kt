@@ -1,8 +1,10 @@
 package com.jnrchayan.fixr
 
 import android.R.id.toggle
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -22,6 +24,18 @@ class mainhome : AppCompatActivity() {
 
         val  drawerLayout : DrawerLayout = findViewById(R.id.draweLayout)
         val navView : NavigationView = findViewById(R.id.nav_View)
+        val profileView = findViewById<LinearLayout>(R.id.profileLayout)
+        val serviceFind = findViewById<LinearLayout>(R.id.serviceLayout)
+
+        profileView.setOnClickListener {
+            val intent = Intent(this, profile::class.java)
+            startActivity(intent)
+        }
+
+        serviceFind.setOnClickListener {
+            val intent = Intent(this, service_find::class.java)
+            startActivity(intent)
+        }
 
         toogle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
 
