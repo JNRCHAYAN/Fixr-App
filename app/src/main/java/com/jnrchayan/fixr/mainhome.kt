@@ -12,11 +12,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 
 class mainhome : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var databaseReference: DatabaseReference
     private lateinit var user: FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,15 +30,31 @@ class mainhome : AppCompatActivity() {
         val profileView = findViewById<LinearLayout>(R.id.profileLayout)
         val serviceFind = findViewById<LinearLayout>(R.id.serviceLayout)
 
-        val userNameTextView = findViewById<TextView>(R.id.userName) // Add this in your XML
-        val userEmailTextView = findViewById<TextView>(R.id.userEmail) // Add this in your XML
+        val userNameTextView = findViewById<TextView>(R.id.userName)
+        val userEmailTextView = findViewById<TextView>(R.id.userEmail)
 
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
 
-        // Display user's name and email
-        userNameTextView.text = user.displayName ?: "No Name Found"
+        // Set default text
         userEmailTextView.text = user.email ?: "No Email Found"
+
+        // Reference to Firebase Realtime Database
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(user.uid)
+
+        // Fetch fullName from the database
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val fullName = snapshot.child("fullName").getValue(String::class.java)
+                    userNameTextView.text = fullName ?: "No Name Found"
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@mainhome, "Failed to load user data", Toast.LENGTH_SHORT).show()
+            }
+        })
 
         profileView.setOnClickListener {
             val intent = Intent(this, profile::class.java)
