@@ -12,22 +12,20 @@ import com.google.firebase.auth.FirebaseAuth
 class LoginActivity : ComponentActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
-  // Chayan
+
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login) // Set the login screen layout
+        setContentView(R.layout.login)
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Find the TextView (signup link) by ID after the layout is set
         val signup_link = findViewById<TextView>(R.id.signup_link)
         val email = findViewById<TextView>(R.id.email)
         val pass = findViewById<TextView>(R.id.password)
         val loginButton = findViewById<Button>(R.id.login_button)
 
         loginButton.setOnClickListener {
-            // Get the text from the TextViews and check if they are not empty
             val emailText = email.text.toString()
             val passText = pass.text.toString()
 
@@ -35,7 +33,7 @@ class LoginActivity : ComponentActivity() {
                 firebaseAuth.signInWithEmailAndPassword(emailText, passText).addOnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                      val intent = Intent(this, mainhome::class.java)
+                        val intent = Intent(this, mainhome::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -46,9 +44,7 @@ class LoginActivity : ComponentActivity() {
             }
         }
 
-        // Handle Signup Link Click
         signup_link.setOnClickListener {
-            // Navigate to SignupActivity
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
