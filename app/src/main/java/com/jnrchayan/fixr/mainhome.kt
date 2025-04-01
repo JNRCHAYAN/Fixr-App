@@ -3,6 +3,7 @@ package com.jnrchayan.fixr
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -29,6 +30,7 @@ class mainhome : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_View)
         val profileView = findViewById<LinearLayout>(R.id.profileLayout)
         val serviceFind = findViewById<LinearLayout>(R.id.serviceLayout)
+        val logoutButton = findViewById<LinearLayout>(R.id.logoutButton)
 
         val userNameTextView = findViewById<TextView>(R.id.userName)
         val userEmailTextView = findViewById<TextView>(R.id.userEmail)
@@ -64,6 +66,15 @@ class mainhome : AppCompatActivity() {
         serviceFind.setOnClickListener {
             val intent = Intent(this, service_find::class.java)
             startActivity(intent)
+        }
+
+        logoutButton.setOnClickListener {
+            firebaseAuth.signOut()
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, first_home::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)

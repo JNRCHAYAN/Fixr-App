@@ -1,6 +1,5 @@
 package com.jnrchayan.fixr
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -13,12 +12,20 @@ class LoginActivity : ComponentActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
 
-    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
 
         firebaseAuth = FirebaseAuth.getInstance()
+
+        // If user is already logged in, redirect to mainhome
+        if (firebaseAuth.currentUser != null) {
+            val intent = Intent(this, mainhome::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+
+        setContentView(R.layout.login) // Set the login screen layout
 
         val signup_link = findViewById<TextView>(R.id.signup_link)
         val email = findViewById<TextView>(R.id.email)
@@ -35,8 +42,9 @@ class LoginActivity : ComponentActivity() {
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, mainhome::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, it.exception?.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
