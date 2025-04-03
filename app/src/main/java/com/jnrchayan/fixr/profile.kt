@@ -17,7 +17,6 @@ class profile : ComponentActivity() {
     // Views
     private lateinit var fullName: EditText
     private lateinit var username: EditText
-    private lateinit var email: EditText
     private lateinit var address: EditText
     private lateinit var updateButton: Button
 
@@ -30,11 +29,10 @@ class profile : ComponentActivity() {
         databaseRef = FirebaseDatabase.getInstance().reference.child("Users")
 
         // Bind views
-        fullName = findViewById(R.id.fullName)
+        fullName = findViewById(R.id.full_name)
         username = findViewById(R.id.username)
-        email = findViewById(R.id.email)
         address = findViewById(R.id.address)
-        updateButton = findViewById(R.id.updateButton)
+        updateButton = findViewById(R.id.update_button)
 
         val userId = firebaseAuth.currentUser?.uid
         if (userId == null) {
@@ -49,7 +47,6 @@ class profile : ComponentActivity() {
                 user?.let {
                     fullName.setText(it.fullName ?: "")
                     username.setText(it.username ?: "")
-                    email.setText(it.email ?: "")
                     address.setText(it.address ?: "")
                 }
             } else {
@@ -68,19 +65,17 @@ class profile : ComponentActivity() {
     private fun updateProfile(userId: String) {
         val fname = fullName.text.toString().trim()
         val uname = username.text.toString().trim()
-        val userEmail = email.text.toString().trim()
         val userAddress = address.text.toString().trim()
 
-        if (fname.isEmpty() || uname.isEmpty() || userEmail.isEmpty() || userAddress.isEmpty()) {
+        if (fname.isEmpty() || uname.isEmpty() || userAddress.isEmpty()) {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Create a map with the updated values
+        // Create a map with the updated values (without email)
         val updatedUser = mapOf(
             "fullName" to fname,
             "username" to uname,
-            "email" to userEmail,
             "address" to userAddress
         )
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     android:background="@color/white"
-    tools:context=".ProfileEditActivity">
+    tools:context=".profile">
 
     <!-- Profile Image -->
     <ImageView
@@ -42,19 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Email -->
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="16dp"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <!-- Address -->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/address"
@@ -64,7 +51,7 @@
         android:inputType="textMultiLine"
         android:padding="16dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintTop_toBottomOf="@id/username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
