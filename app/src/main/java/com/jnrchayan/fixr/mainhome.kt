@@ -29,6 +29,7 @@ class mainhome : AppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.draweLayout)
         val navView: NavigationView = findViewById(R.id.nav_View)
         val profileView = findViewById<LinearLayout>(R.id.profileLayout)
+        val addService = findViewById<Button>(R.id.addservice)
         val serviceFind = findViewById<LinearLayout>(R.id.serviceLayout)
         val logoutButton = findViewById<LinearLayout>(R.id.logoutButton)
 
@@ -76,7 +77,10 @@ class mainhome : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
+        addService.setOnClickListener {
+            val intent = Intent(this, add_service::class.java)
+            startActivity(intent)
+        }
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
