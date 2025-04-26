@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="#F7F9FC"
-    tools:context=".add_service">
+    android:fitsSystemWindows="true"
+    tools:context=".add_service"
+    android:layout_margin="10dp"
+
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,14 +26,16 @@
             android:inputType="textCapWords"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
         <!-- Category Spinner -->
         <Spinner
             android:id="@+id/spinnerCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp" />
 
         <!-- Description -->
         <EditText
@@ -41,7 +47,9 @@
             android:gravity="top"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
         <!-- Image Upload -->
         <Button
@@ -49,14 +57,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Upload Service Image"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2196F3" />
 
         <!-- Price Range -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="16dp">
 
             <EditText
                 android:id="@+id/editTextMinPrice"
@@ -67,7 +77,9 @@
                 android:inputType="number"
                 android:padding="12dp"
                 android:background="@android:drawable/edit_text"
-                android:layout_marginEnd="8dp" />
+                android:layout_marginEnd="8dp"
+                android:textColor="#333333"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editTextMaxPrice"
@@ -77,7 +89,9 @@
                 android:hint="Max Price"
                 android:inputType="number"
                 android:padding="12dp"
-                android:background="@android:drawable/edit_text" />
+                android:background="@android:drawable/edit_text"
+                android:textColor="#333333"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <!-- Availability Time -->
@@ -86,7 +100,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select Available Time"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2196F3" />
 
         <!-- Days of the Week -->
         <TextView
@@ -94,12 +110,14 @@
             android:layout_height="wrap_content"
             android:text="Available Days:"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <CheckBox android:text="Mon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             <CheckBox android:text="Tue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
@@ -118,8 +136,10 @@
             android:hint="Location"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
         <!-- Contact Info -->
         <EditText
@@ -130,7 +150,9 @@
             android:inputType="phone"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -140,7 +162,9 @@
             android:inputType="textEmailAddress"
             android:padding="12dp"
             android:background="@android:drawable/edit_text"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="32dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
 
         <!-- Submit Buttons -->
         <Button
@@ -149,8 +173,8 @@
             android:layout_height="wrap_content"
             android:text="Save as Draft"
             android:backgroundTint="#B0BEC5"
-            android:textColor="#ffffff"
-            android:layout_marginBottom="8dp" />
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/buttonSubmit"
@@ -158,6 +182,6 @@
             android:layout_height="wrap_content"
             android:text="Submit Service"
             android:backgroundTint="#2196F3"
-            android:textColor="#ffffff" />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>
