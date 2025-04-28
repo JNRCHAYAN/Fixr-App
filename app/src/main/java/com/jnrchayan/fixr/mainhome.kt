@@ -39,13 +39,13 @@ class mainhome : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
 
-        // Set default text
+
         userEmailTextView.text = user.email ?: "No Email Found"
 
-        // Reference to Firebase Realtime Database
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(user.uid)
 
-        // Fetch fullName from the database
+
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
