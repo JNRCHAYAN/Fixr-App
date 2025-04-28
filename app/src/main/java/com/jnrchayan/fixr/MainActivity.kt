@@ -9,13 +9,13 @@ import androidx.activity.ComponentActivity
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.flashscreen) // Set the splash screen layout
+        setContentView(R.layout.flashscreen)
 
-        // Delay for 5 seconds and then move to HomeActivity
+
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, first_home::class.java)
             startActivity(intent)
-            finish() // Close splash screen activity
-        }, 1000) // 5000ms = 5 seconds
+            finish()
+        }, 1000)
     }
 }
