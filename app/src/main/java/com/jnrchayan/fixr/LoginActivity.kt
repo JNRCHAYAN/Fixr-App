@@ -17,7 +17,7 @@ class LoginActivity : ComponentActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // If user is already logged in, redirect to mainhome
+
         if (firebaseAuth.currentUser != null) {
             val intent = Intent(this, mainhome::class.java)
             startActivity(intent)
@@ -25,7 +25,7 @@ class LoginActivity : ComponentActivity() {
             return
         }
 
-        setContentView(R.layout.login) // Set the login screen layout
+        setContentView(R.layout.login)
 
         val signup_link = findViewById<TextView>(R.id.signup_link)
         val email = findViewById<TextView>(R.id.email)
