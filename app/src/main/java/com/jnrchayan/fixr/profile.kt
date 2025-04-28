@@ -14,7 +14,7 @@ class profile : ComponentActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseRef: DatabaseReference
 
-    // Views
+
     private lateinit var fullName: EditText
     private lateinit var username: EditText
     private lateinit var address: EditText
@@ -24,11 +24,11 @@ class profile : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile)
 
-        // Initialize Firebase
+
         firebaseAuth = FirebaseAuth.getInstance()
         databaseRef = FirebaseDatabase.getInstance().reference.child("Users")
 
-        // Bind views
+
         fullName = findViewById(R.id.full_name)
         username = findViewById(R.id.username)
         address = findViewById(R.id.address)
@@ -40,7 +40,7 @@ class profile : ComponentActivity() {
             return
         }
 
-        // Fetch and display user data
+
         databaseRef.child(userId).get().addOnSuccessListener { snapshot ->
             if (snapshot.exists()) {
                 val user = snapshot.getValue(User::class.java)
@@ -56,7 +56,7 @@ class profile : ComponentActivity() {
             Toast.makeText(this, "Failed to fetch user data: ${it.message}", Toast.LENGTH_SHORT).show()
         }
 
-        // Set update button click listener
+
         updateButton.setOnClickListener {
             updateProfile(userId)
         }
@@ -72,14 +72,14 @@ class profile : ComponentActivity() {
             return
         }
 
-        // Create a map with the updated values (without email)
+
         val updatedUser = mapOf(
             "fullName" to fname,
             "username" to uname,
             "address" to userAddress
         )
 
-        // Update user data in the Firebase Realtime Database
+
         databaseRef.child(userId).updateChildren(updatedUser).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
