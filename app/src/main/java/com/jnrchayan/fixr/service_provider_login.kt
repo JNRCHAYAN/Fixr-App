@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.jnrchayan.fixr.ServiceProviderSignUpActivity
+import com.jnrchayan.fixr.service_provider_login
 import com.jnrchayan.fixr.mainhome
 
 class service_provider_login : AppCompatActivity() {

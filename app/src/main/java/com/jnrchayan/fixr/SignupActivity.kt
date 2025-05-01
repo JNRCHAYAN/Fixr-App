@@ -21,6 +21,7 @@ class SignupActivity : ComponentActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        // 👇 Save to a separate "Users" node in Firebase Realtime Database
         databaseRef = FirebaseDatabase.getInstance().reference.child("Users")
 
         binding.signupButton.setOnClickListener {
@@ -43,9 +44,10 @@ class SignupActivity : ComponentActivity() {
                         userId?.let {
                             databaseRef.child(it).setValue(user).addOnCompleteListener { dbTask ->
                                 if (dbTask.isSuccessful) {
-                                    Toast.makeText(this, "SignUp Successfully", Toast.LENGTH_SHORT).show()
-                                 val intent = Intent(this, mainhome::class.java)
+                                    Toast.makeText(this, "Sign Up Successful", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this, mainhome::class.java)
                                     startActivity(intent)
+                                    finish()
                                 } else {
                                     Toast.makeText(this, dbTask.exception.toString(), Toast.LENGTH_SHORT).show()
                                 }
@@ -60,6 +62,7 @@ class SignupActivity : ComponentActivity() {
             }
         }
 
+        // Navigate to Login page
         val loginLink = findViewById<TextView>(R.id.login_link)
         loginLink.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
