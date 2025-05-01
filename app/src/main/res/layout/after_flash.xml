@@ -12,47 +12,49 @@
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginBottom="24dp"
+        android:src="@drawable/fixr"
         android:scaleType="fitCenter"
-        android:src="@drawable/login" />
+        android:layout_marginBottom="24dp" />
 
     <!-- Welcome Text -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:justificationMode="inter_word"
-        android:lineSpacingExtra="6dp"
-        android:paddingHorizontal="24dp"
-        android:text="Welome to FIXE. Now login your accout or signup"
+        android:text="Welcome to Fixr - Your one-stop platform to browse services, book professionals, track arrival, and make secure payments."
         android:textAlignment="viewStart"
+        android:justificationMode="inter_word"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:lineSpacingExtra="6dp"
+        android:paddingHorizontal="24dp"
+        android:layout_marginBottom="32dp" />
 
 
     <!-- Login Button -->
     <Button
-        android:id="@+id/login"
+        android:id="@+id/g_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textColor="@color/white"
-        android:background="@drawable/button_bg"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_bg2"
         android:padding="14dp"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        android:text="Get Service"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <Button
-        android:id="@+id/signup"
+        android:id="@+id/p_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Signup"
-        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_bg"
         android:padding="14dp"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        android:text="Provide Service"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
 
 </LinearLayout>

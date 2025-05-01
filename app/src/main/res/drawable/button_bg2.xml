@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <corners android:radius="30dp"/> <!-- Rounded corners -->
-    <solid android:color="@color/primaryColor"/> <!-- Button color -->
+    <solid android:color="#DB35FA"/> <!-- Button color -->
     <padding android:left="16dp" android:right="16dp" android:top="10dp" android:bottom="10dp"/>
     <size android:width="250dp"/> <!-- Fixed width for better UI -->
     <shadowColor android:radius="4dp"/> <!-- Adds a shadow -->

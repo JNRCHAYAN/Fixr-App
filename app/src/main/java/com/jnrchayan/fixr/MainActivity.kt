@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
 
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, first_home::class.java)
+            val intent = Intent(this, after_flash::class.java)
             startActivity(intent)
             finish()
         }, 1000)
