@@ -8,9 +8,7 @@
     android:background="#F7F9FC"
     android:fitsSystemWindows="true"
     tools:context=".add_service"
-    android:layout_margin="10dp"
-
-    >
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -119,13 +117,47 @@
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <CheckBox android:text="Mon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <CheckBox android:text="Tue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <CheckBox android:text="Wed" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <CheckBox android:text="Thu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <CheckBox android:text="Fri" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <CheckBox android:text="Sat" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <CheckBox android:text="Sun" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/checkboxMonday"
+                android:text="Mon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/checkboxTuesday"
+                android:text="Tue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/checkboxWednesday"
+                android:text="Wed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/checkboxThursday"
+                android:text="Thu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/checkboxFriday"
+                android:text="Fri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/checkboxSaturday"
+                android:text="Sat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/checkboxSunday"
+                android:text="Sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <!-- Location -->
