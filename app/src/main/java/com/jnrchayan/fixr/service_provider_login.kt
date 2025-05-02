@@ -54,7 +54,7 @@ class service_provider_login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Login success, navigate to the next screen (e.g., Service Dashboard)
-                    val intent = Intent(this, mainhome::class.java)
+                    val intent = Intent(this, ServiceProviderHomeActivity::class.java)
                     startActivity(intent)
                     finish()  // Close the login screen
                 } else {
