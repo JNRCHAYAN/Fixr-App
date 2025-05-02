@@ -23,8 +23,8 @@ class ServiceProviderHomeActivity : AppCompatActivity() {
     private lateinit var userNameText: TextView
     private lateinit var greetingText: TextView
     private lateinit var settingsButton: ImageView
-    private lateinit var addServiceLayout: TextView
-    private lateinit var myServiceLayout: TextView
+    private lateinit var addServiceLayout: LinearLayout
+    private lateinit var myServiceLayout: LinearLayout
     private lateinit var currentUser: FirebaseUser
     private lateinit var logoutButton: Button
 
@@ -44,8 +44,8 @@ class ServiceProviderHomeActivity : AppCompatActivity() {
         userNameText = findViewById(R.id.userNameText)
         greetingText = findViewById(R.id.greetingText)
         settingsButton = findViewById(R.id.settingsButton)
-        addServiceLayout = findViewById(R.id.addServiceText)
-        myServiceLayout = findViewById(R.id.myServiceText)
+        addServiceLayout = findViewById(R.id.addServiceLayout)
+        myServiceLayout = findViewById(R.id.myServiceLayout)
 
         // Set greeting based on time
         greetingText.text = getGreetingMessage()
@@ -59,7 +59,7 @@ class ServiceProviderHomeActivity : AppCompatActivity() {
         }
 
         myServiceLayout.setOnClickListener {
-            startActivity(Intent(this, add_service::class.java))
+            startActivity(Intent(this, mainhome::class.java))
         }
 
         settingsButton.setOnClickListener {

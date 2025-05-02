@@ -16,19 +16,5 @@ class add_service : AppCompatActivity() {
         setContentView(R.layout.activity_add_service)
 
 
-        firebaseAuth = FirebaseAuth.getInstance()
-
-
-        if (firebaseAuth.currentUser != null) {
-            val intent = Intent(this, mainhome::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
     }
 }
