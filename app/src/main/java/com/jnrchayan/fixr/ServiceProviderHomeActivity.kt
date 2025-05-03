@@ -15,6 +15,7 @@ import com.jnrchayan.fixr.add_service
 import com.jnrchayan.fixr.mainhome
 import com.jnrchayan.fixr.profile
 import com.jnrchayan.fixr.service_provider_login
+import java.util.Calendar
 
 class ServiceProviderHomeActivity : AppCompatActivity() {
 
@@ -79,7 +80,7 @@ class ServiceProviderHomeActivity : AppCompatActivity() {
     }
 
     private fun getGreetingMessage(): String {
-        val hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
+        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         return when (hour) {
             in 5..11 -> "Good Morning!"
             in 12..16 -> "Good Afternoon!"

@@ -18,13 +18,21 @@ class add_service : AppCompatActivity() {
     private lateinit var description: EditText
     private lateinit var minPrice: EditText
     private lateinit var maxPrice: EditText
-    private lateinit var timeButton: Button
+    private lateinit var selectTimeButton: Button
     private lateinit var location: EditText
     private lateinit var phone: EditText
-    private lateinit var email: EditText
     private lateinit var submitButton: Button
 
+    private lateinit var checkboxMonday: CheckBox
+    private lateinit var checkboxTuesday: CheckBox
+    private lateinit var checkboxWednesday: CheckBox
+    private lateinit var checkboxThursday: CheckBox
+    private lateinit var checkboxFriday: CheckBox
+    private lateinit var checkboxSaturday: CheckBox
+    private lateinit var checkboxSunday: CheckBox
+
     private lateinit var checkBoxes: List<CheckBox>
+
     private var selectedTime: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,33 +47,41 @@ class add_service : AppCompatActivity() {
         description = findViewById(R.id.editTextDescription)
         minPrice = findViewById(R.id.editTextMinPrice)
         maxPrice = findViewById(R.id.editTextMaxPrice)
-        timeButton = findViewById(R.id.buttonSelectTime)
+        selectTimeButton = findViewById(R.id.buttonSelectTime)
         location = findViewById(R.id.editTextLocation)
         phone = findViewById(R.id.editTextPhone)
-        email = findViewById(R.id.editTextEmail)
         submitButton = findViewById(R.id.buttonSubmit)
 
-        // CheckBoxes
+        checkboxMonday = findViewById(R.id.checkboxMonday)
+        checkboxTuesday = findViewById(R.id.checkboxTuesday)
+        checkboxWednesday = findViewById(R.id.checkboxWednesday)
+        checkboxThursday = findViewById(R.id.checkboxThursday)
+        checkboxFriday = findViewById(R.id.checkboxFriday)
+        checkboxSaturday = findViewById(R.id.checkboxSaturday)
+        checkboxSunday = findViewById(R.id.checkboxSunday)
+
         checkBoxes = listOf(
-            findViewById(R.id.checkboxMonday),
-            findViewById(R.id.checkboxTuesday),
-            findViewById(R.id.checkboxWednesday),
-            findViewById(R.id.checkboxThursday),
-            findViewById(R.id.checkboxFriday),
-            findViewById(R.id.checkboxSaturday),
-            findViewById(R.id.checkboxSunday)
+            checkboxMonday, checkboxTuesday, checkboxWednesday,
+            checkboxThursday, checkboxFriday, checkboxSaturday, checkboxSunday
         )
 
-        // Time picker
-        timeButton.setOnClickListener {
-            val c = Calendar.getInstance()
-            val hour = c.get(Calendar.HOUR_OF_DAY)
-            val minute = c.get(Calendar.MINUTE)
+        // Setup spinner items (you can change as needed)
+        val categories = arrayOf("Plumber", "Electrician", "Cleaner", "Technician", "Other")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categories)
+        categorySpinner.adapter = adapter
 
-            TimePickerDialog(this, { _, hourOfDay, minuteOfDay ->
-                selectedTime = String.format("%02d:%02d", hourOfDay, minuteOfDay)
-                timeButton.text = "Available at: $selectedTime"
-            }, hour, minute, true).show()
+        // Time picker
+        selectTimeButton.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+
+            val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+                selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+                selectTimeButton.text = "Available at: $selectedTime"
+            }, hour, minute, true)
+
+            timePickerDialog.show()
         }
 
         // Submit button
@@ -89,38 +105,31 @@ class add_service : AppCompatActivity() {
         val max = maxPrice.text.toString().trim()
         val loc = location.text.toString().trim()
         val phoneNumber = phone.text.toString().trim()
-        val emailText = email.text.toString().trim()
-
         val availableDays = checkBoxes.filter { it.isChecked }.map { it.text.toString() }
 
         if (TextUtils.isEmpty(title) || TextUtils.isEmpty(desc) || TextUtils.isEmpty(min) ||
             TextUtils.isEmpty(max) || TextUtils.isEmpty(loc) || TextUtils.isEmpty(phoneNumber) ||
-            selectedTime.isEmpty()
+            selectedTime.isEmpty() || availableDays.isEmpty()
         ) {
             Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val serviceRef = FirebaseDatabase.getInstance()
-            .getReference("ServiceProviders")
-            .child("Users")
-            .child(uid)
-            .child("services")
-
+        val serviceRef = FirebaseDatabase.getInstance().getReference("servicelist")
         val serviceId = serviceRef.push().key ?: return
 
         val serviceData = mapOf(
             "serviceId" to serviceId,
+            "providerId" to uid,
             "title" to title,
             "category" to category,
             "description" to desc,
             "minPrice" to min,
             "maxPrice" to max,
-            "time" to selectedTime,
+            "availableTime" to selectedTime,
+            "availableDays" to availableDays,
             "location" to loc,
-            "phone" to phoneNumber,
-            "email" to emailText,
-            "availableDays" to availableDays
+            "phone" to phoneNumber
         )
 
         serviceRef.child(serviceId)
@@ -134,17 +143,16 @@ class add_service : AppCompatActivity() {
             }
     }
 
-
     private fun clearFields() {
-        serviceTitle.text.clear()
-        description.text.clear()
-        minPrice.text.clear()
-        maxPrice.text.clear()
-        location.text.clear()
-        phone.text.clear()
-        email.text.clear()
+        serviceTitle.setText("")
+        description.setText("")
+        minPrice.setText("")
+        maxPrice.setText("")
+        location.setText("")
+        phone.setText("")
         selectedTime = ""
-        timeButton.text = "Select Available Time"
+        selectTimeButton.text = "Select Available Time"
         checkBoxes.forEach { it.isChecked = false }
+        categorySpinner.setSelection(0)
     }
 }
