@@ -33,6 +33,17 @@
         <activity
             android:name=".service_find"
             android:exported="false" />
+
+        <activity
+            android:name=".MyServiceListActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ServiceListActivity"
+            android:exported="false" />
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
