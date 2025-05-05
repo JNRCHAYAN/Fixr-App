@@ -26,7 +26,7 @@ class ServiceAdapter(private val services: List<ServiceModel>) :
         val service = services[position]
         holder.tvTitle.text = service.title
         holder.tvCategory.text = "Category: ${service.category}"
-        holder.tvPrice.text = "Price: ${service.priceMin} - ${service.priceMax}"
+        holder.tvPrice.text = "Price: ${service.maxPrice} Taka - ${service.minPrice} Taka"
         holder.tvLocation.text = "Location: ${service.location}"
         holder.tvDays.text = "Available: ${service.availableDays.joinToString(", ")}"
     }
