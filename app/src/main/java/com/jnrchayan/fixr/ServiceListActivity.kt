@@ -3,8 +3,7 @@ package com.jnrchayan.fixr
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +16,11 @@ class ServiceListActivity : AppCompatActivity() {
     private lateinit var filteredList: ArrayList<ServiceModel>
     private lateinit var adapter: ServiceAdapter
     private lateinit var etSearch: EditText
+    private lateinit var etLocation: EditText
+    private lateinit var spinnerCategory: Spinner
     private val databaseRef = FirebaseDatabase.getInstance().getReference("servicelist")
+
+    private val categoryList = listOf("All", "Electrician", "Plumber", "Carpenter", "Cleaner", "Mechanic")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +30,35 @@ class ServiceListActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         etSearch = findViewById(R.id.editTextSearch)
+        etLocation = findViewById(R.id.editTextLocation)
+        spinnerCategory = findViewById(R.id.spinnerCategory)
+
+        // Set up category dropdown
+        val categoryAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categoryList)
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerCategory.adapter = categoryAdapter
 
         serviceList = ArrayList()
         filteredList = ArrayList()
         adapter = ServiceAdapter(filteredList)
         recyclerView.adapter = adapter
 
-        etSearch.addTextChangedListener(object : TextWatcher {
+        val filterWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filterServices(s.toString())
+                filterServices()
             }
-
             override fun afterTextChanged(s: Editable?) {}
-        })
+        }
+
+        etSearch.addTextChangedListener(filterWatcher)
+        etLocation.addTextChangedListener(filterWatcher)
+        spinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View, position: Int, id: Long) {
+                filterServices()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
 
         loadServices()
     }
@@ -54,7 +71,7 @@ class ServiceListActivity : AppCompatActivity() {
                     val service = serviceSnap.getValue(ServiceModel::class.java)
                     service?.let { serviceList.add(it) }
                 }
-                filterServices(etSearch.text.toString())
+                filterServices()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -63,14 +80,18 @@ class ServiceListActivity : AppCompatActivity() {
         })
     }
 
-    private fun filterServices(query: String) {
-        val lowerCaseQuery = query.lowercase()
+    private fun filterServices() {
+        val query = etSearch.text.toString().lowercase()
+        val locationQuery = etLocation.text.toString().lowercase()
+        val selectedCategory = spinnerCategory.selectedItem.toString().lowercase()
+
         filteredList.clear()
         for (service in serviceList) {
-            if (service.title.lowercase().contains(lowerCaseQuery) ||
-                service.category.lowercase().contains(lowerCaseQuery) ||
-                service.location.lowercase().contains(lowerCaseQuery)
-            ) {
+            val matchesTitleOrDesc = service.title.lowercase().contains(query)
+            val matchesLocation = locationQuery.isEmpty() || service.location.lowercase().contains(locationQuery)
+            val matchesCategory = selectedCategory == "all" || service.category.lowercase() == selectedCategory
+
+            if (matchesTitleOrDesc && matchesLocation && matchesCategory) {
                 filteredList.add(service)
             }
         }
