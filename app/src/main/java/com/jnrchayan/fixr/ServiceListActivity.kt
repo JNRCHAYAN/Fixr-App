@@ -20,7 +20,8 @@ class ServiceListActivity : AppCompatActivity() {
     private lateinit var spinnerCategory: Spinner
     private val databaseRef = FirebaseDatabase.getInstance().getReference("servicelist")
 
-    private val categoryList = listOf("All", "Electrician", "Plumber", "Carpenter", "Cleaner", "Mechanic")
+    private val categoryList = listOf("All", "Electrician",
+        "Plumber", "Carpenter", "Cleaner", "Mechanic")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
