@@ -1,5 +1,6 @@
 package com.jnrchayan.fixr
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import java.io.Serializable
 
 class ServiceListActivity : AppCompatActivity() {
 
@@ -20,8 +22,7 @@ class ServiceListActivity : AppCompatActivity() {
     private lateinit var spinnerCategory: Spinner
     private val databaseRef = FirebaseDatabase.getInstance().getReference("servicelist")
 
-    private val categoryList = listOf("All", "Electrician",
-        "Plumber", "Carpenter", "Cleaner", "Mechanic")
+    private val categoryList = listOf("All", "Electrician", "Plumber", "Carpenter", "Cleaner", "Mechanic")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +35,20 @@ class ServiceListActivity : AppCompatActivity() {
         etLocation = findViewById(R.id.editTextLocation)
         spinnerCategory = findViewById(R.id.spinnerCategory)
 
-        // Set up category dropdown
         val categoryAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categoryList)
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategory.adapter = categoryAdapter
 
         serviceList = ArrayList()
         filteredList = ArrayList()
-        adapter = ServiceAdapter(filteredList)
+
+        adapter = ServiceAdapter(filteredList) { selectedService ->
+            // When item clicked, open ServiceDetailActivity
+            val intent = Intent(this, ServiceDetailActivity::class.java)
+            intent.putExtra("service", selectedService as Serializable)
+            startActivity(intent)
+        }
+
         recyclerView.adapter = adapter
 
         val filterWatcher = object : TextWatcher {

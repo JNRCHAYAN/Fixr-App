@@ -17,12 +17,11 @@ class ServiceDetailActivity : AppCompatActivity() {
     private lateinit var tvDescription: TextView
     private lateinit var btnCall: Button
 
-    private var phoneNumber: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service_detail)
 
+        // Initialize views
         tvTitle = findViewById(R.id.tvTitle)
         tvCategory = findViewById(R.id.tvCategory)
         tvLocation = findViewById(R.id.tvLocation)
@@ -31,25 +30,26 @@ class ServiceDetailActivity : AppCompatActivity() {
         tvDescription = findViewById(R.id.tvDescription)
         btnCall = findViewById(R.id.btnCall)
 
-        // Use Serializable to get the object
+        // Receive Serializable object
         val service = intent.getSerializableExtra("service") as? ServiceModel
 
-        service?.let {
-            tvTitle.text = it.title
-            tvCategory.text = "Category: ${it.category}"
-            tvLocation.text = "Location: ${it.location}"
-            tvPrice.text = "Price: ${it.maxPrice}"
-            tvDays.text = "Available Days: ${it.availableDays}"
-            tvDescription.text = "Description: ${it.description}"
-            phoneNumber = it.phone
-        }
+        service?.let { serviceData ->
+            tvTitle.text = serviceData.title
+            tvCategory.text = "Category: ${serviceData.category}"
+            tvLocation.text = "Location: ${serviceData.location}"
+            tvPrice.text = "Price: ${serviceData.minPrice} - ${serviceData.maxPrice} Taka"
+            tvDays.text = "Available Days: ${serviceData.availableDays.joinToString(", ")}"
+            tvDescription.text = "Description: ${serviceData.description}"
 
-        btnCall.setOnClickListener {
-            phoneNumber?.let { number ->
+            // Set up call button
+            btnCall.setOnClickListener {
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse("tel:$number")
+                intent.data = Uri.parse("tel:${serviceData.phone}")
                 startActivity(intent)
             }
+        } ?: run {
+            // If no service data was passed, finish the activity
+            finish()
         }
     }
 }
