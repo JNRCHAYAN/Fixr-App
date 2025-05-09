@@ -65,7 +65,7 @@ class mainhome : AppCompatActivity() {
         }
 
         serviceFind.setOnClickListener {
-            val intent = Intent(this, service_find::class.java)
+            val intent = Intent(this, ServiceListActivity::class.java)
             startActivity(intent)
         }
 
