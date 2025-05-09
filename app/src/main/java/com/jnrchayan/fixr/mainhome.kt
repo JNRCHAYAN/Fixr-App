@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +32,9 @@ class mainhome : AppCompatActivity() {
         val profileView = findViewById<LinearLayout>(R.id.profileLayout)
         val serviceFind = findViewById<LinearLayout>(R.id.serviceLayout)
         val logoutButton = findViewById<LinearLayout>(R.id.logoutButton)
+        val serach = findViewById<TextView>(R.id.textView7)
+        val LayoutClick = findViewById<ConstraintLayout>(R.id.constraintLayout)
+
 
         val userNameTextView = findViewById<TextView>(R.id.userName)
         val userEmailTextView = findViewById<TextView>(R.id.userEmail)
@@ -64,6 +68,14 @@ class mainhome : AppCompatActivity() {
         }
 
         serviceFind.setOnClickListener {
+            val intent = Intent(this, ServiceListActivity::class.java)
+            startActivity(intent)
+        }
+        serach.setOnClickListener {
+            val intent = Intent(this, ServiceListActivity::class.java)
+            startActivity(intent)
+        }
+        LayoutClick.setOnClickListener {
             val intent = Intent(this, ServiceListActivity::class.java)
             startActivity(intent)
         }
