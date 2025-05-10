@@ -60,7 +60,7 @@ class ServiceProviderHomeActivity : AppCompatActivity() {
         }
 
         myServiceLayout.setOnClickListener {
-            startActivity(Intent(this, ServiceListActivity::class.java))
+            startActivity(Intent(this, ProviderServicesActivity::class.java))
         }
 
         settingsButton.setOnClickListener {
