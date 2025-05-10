@@ -83,7 +83,7 @@ class mainhome : AppCompatActivity() {
         logoutButton.setOnClickListener {
             firebaseAuth.signOut()
             Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, first_home::class.java)
+            val intent = Intent(this, after_flash::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
