@@ -6,70 +6,88 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
+    <!-- Service Title -->
     <TextView
         android:id="@+id/serviceTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Service Title"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Service Category -->
     <TextView
         android:id="@+id/serviceCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Category"
         android:textSize="14sp"
+        android:textColor="#6e6e6e"
         app:layout_constraintTop_toBottomOf="@id/serviceTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Service Description -->
     <TextView
         android:id="@+id/serviceDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Description"
         android:textSize="12sp"
+        android:textColor="#9e9e9e"
         app:layout_constraintTop_toBottomOf="@id/serviceCategory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Max Price -->
     <TextView
         android:id="@+id/serviceMaxPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Max Price"
+        android:text="Max Price: $0"
         android:textSize="12sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/serviceDescription"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Min Price -->
     <TextView
         android:id="@+id/serviceMinPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Min Price"
+        android:text="Min Price: $0"
         android:textSize="12sp"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/serviceMaxPrice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Edit Button -->
     <Button
         android:id="@+id/editButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Edit"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/serviceMinPrice"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/deleteButton"
+        android:layout_marginEnd="8dp" />
 
+    <!-- Delete Button -->
     <Button
         android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Delete"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/serviceMinPrice"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/editButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
