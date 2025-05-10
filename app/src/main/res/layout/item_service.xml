@@ -2,8 +2,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="12dp"
-    card_view:cardCornerRadius="16dp"
+    android:layout_margin="16dp"
+    card_view:cardCornerRadius="12dp"
     card_view:cardElevation="8dp"
     android:background="#FFFFFF"
     android:padding="16dp">
@@ -11,53 +11,123 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" android:layout_margin="20dp">
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:background="@drawable/card_background"
+        android:layout_gravity="center">
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Service Title"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#222222"
-            android:paddingBottom="8dp" />
+            android:textColor="#333333"
+            android:paddingBottom="12dp"
+            android:gravity="center"
+            android:textAllCaps="true" />
 
-        <TextView
-            android:id="@+id/tvCategory"
+        <!-- Category Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Category: Home Repair"
-            android:textColor="#FF9800"
-            android:textSize="16sp"
-            android:paddingBottom="4dp" />
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/tvPrice"
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_category"
+                android:contentDescription="Category Icon"
+                android:layout_marginEnd="10dp"
+                android:tint="#FF9800" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: Home Repair"
+                android:textColor="#FF9800"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Price Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Price: ৳200 - ৳500"
-            android:textColor="#4CAF50"
-            android:textSize="16sp"
-            android:paddingBottom="4dp" />
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/tvLocation"
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_money"
+                android:contentDescription="Price Icon"
+                android:layout_marginEnd="10dp"
+                android:tint="#4CAF50" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price: ৳200 - ৳500"
+                android:textColor="#4CAF50"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Location Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location: Dhaka"
-            android:textColor="#03A9F4"
-            android:textSize="16sp"
-            android:paddingBottom="4dp" />
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/tvDays"
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_menu_mylocation"
+                android:contentDescription="Location Icon"
+                android:tint="#03A9F4"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Dhaka"
+                android:textColor="#03A9F4"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Days Available Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Available: Monday, Wednesday"
-            android:textColor="#757575"
-            android:textSize="15sp" />
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_menu_today"
+                android:contentDescription="Days Icon"
+                android:layout_marginEnd="10dp"
+                card_view:tint="#757575" />
+
+            <TextView
+                android:id="@+id/tvDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available: Monday, Wednesday"
+                android:textColor="#757575"
+                android:textSize="16sp" />
+        </LinearLayout>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
