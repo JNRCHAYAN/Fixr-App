@@ -2,82 +2,138 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
+    <!-- Service Title EditText -->
     <android.widget.EditText
         android:id="@+id/editTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Service Title"
         android:inputType="text"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Description EditText -->
     <android.widget.EditText
         android:id="@+id/editDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Description"
         android:inputType="textMultiLine"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTitle"
         android:layout_marginTop="16dp" />
 
+    <!-- Max Price EditText -->
     <android.widget.EditText
         android:id="@+id/editMaxPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Max Price"
         android:inputType="numberDecimal"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_money"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editDescription"
         android:layout_marginTop="16dp" />
 
+    <!-- Min Price EditText -->
     <android.widget.EditText
         android:id="@+id/editMinPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Min Price"
         android:inputType="numberDecimal"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_money"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editMaxPrice"
         android:layout_marginTop="16dp" />
 
+    <!-- Service Time EditText -->
     <android.widget.EditText
         android:id="@+id/editTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Service Time"
         android:inputType="text"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editMinPrice"
         android:layout_marginTop="16dp" />
 
+    <!-- Location EditText -->
     <android.widget.EditText
         android:id="@+id/editLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Location"
         android:inputType="text"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTime"
         android:layout_marginTop="16dp" />
 
+    <!-- Phone Number EditText -->
     <android.widget.EditText
         android:id="@+id/editPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Phone Number"
         android:inputType="phone"
+        android:background="@drawable/edittext_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#B0B0B0"
+        android:textSize="16sp"
+        android:drawableLeft="@drawable/ic_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editLocation"
         android:layout_marginTop="16dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
