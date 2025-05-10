@@ -17,16 +17,18 @@ class ProviderServicesActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ProviderServiceAdapter
     private val serviceList = mutableListOf<ProviderServiceModel>()
-    private lateinit var database: DatabaseReference
+    private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
 
-    // Initialize Firebase Auth and Database Reference
+    private var currentUserId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.provider_service_services)
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().getReference("ServiceProviders")
+        database = FirebaseDatabase.getInstance()
+        currentUserId = auth.currentUser?.uid
 
         recyclerView = findViewById(R.id.recyclerViewServices)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -39,59 +41,66 @@ class ProviderServicesActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
-        loadServicesByProviderId()  // Load services for the logged-in provider
+        loadServicesByProviderId()
     }
 
-    // Load services by the logged-in provider's ID
     private fun loadServicesByProviderId() {
-        val targetProviderId = auth.currentUser?.uid // Get the logged-in user's UID
-        if (targetProviderId != null) {
-            database.child(targetProviderId).child("servicelist")
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        serviceList.clear()
-                        for (serviceSnap in snapshot.children) {
-                            val service = serviceSnap.getValue(ProviderServiceModel::class.java)
-                            if (service != null) {
-                                serviceList.add(service)
-                            }
-                        }
-
-                        // Log the services retrieved
-                        Log.d("ProviderServicesActivity", "Loaded services: ${serviceList.size}")
-
-                        if (serviceList.isEmpty()) {
-                            Toast.makeText(this@ProviderServicesActivity, "No services found for this provider.", Toast.LENGTH_SHORT).show()
-                        }
-
-                        adapter.notifyDataSetChanged()
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        Toast.makeText(this@ProviderServicesActivity, "Failed to load services.", Toast.LENGTH_SHORT).show()
-                    }
-                })
-        } else {
+        if (currentUserId == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        val providerRef = database.getReference("ServiceProviders")
+
+        providerRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                serviceList.clear()
+
+                for (providerSnap in snapshot.children) {
+                    val serviceListSnap = providerSnap.child("servicelist")
+                    for (serviceSnap in serviceListSnap.children) {
+                        val service = serviceSnap.getValue(ProviderServiceModel::class.java)
+                        if (service != null && service.providerId == currentUserId) {
+                            serviceList.add(service)
+                        }
+                    }
+                }
+
+                Log.d("ProviderServicesActivity", "Loaded services: ${serviceList.size}")
+                if (serviceList.isEmpty()) {
+                    Toast.makeText(this@ProviderServicesActivity, "No services found for this provider.", Toast.LENGTH_SHORT).show()
+                }
+
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@ProviderServicesActivity, "Failed to load services.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    // Delete a service from the database
     private fun deleteService(service: ProviderServiceModel) {
-        val targetProviderId = auth.currentUser?.uid // Get the logged-in user's UID
-        if (targetProviderId != null) {
-            database.child(targetProviderId).child("servicelist").child(service.serviceId).removeValue()
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Service deleted", Toast.LENGTH_SHORT).show()
-                    loadServicesByProviderId()  // Reload the services after deletion
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "Failed to delete", Toast.LENGTH_SHORT).show()
-                }
+        if (currentUserId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        val updates = hashMapOf<String, Any?>(
+            "/servicelist/${service.serviceId}" to null,
+            "/ServiceProviders/$currentUserId/servicelist/${service.serviceId}" to null
+        )
+
+        database.reference.updateChildren(updates)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Service deleted", Toast.LENGTH_SHORT).show()
+                loadServicesByProviderId()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to delete", Toast.LENGTH_SHORT).show()
+            }
     }
 
-    // Show dialog to edit a service
     private fun showEditDialog(service: ProviderServiceModel) {
         val view = LayoutInflater.from(this).inflate(R.layout.provider_dialog_edit_service, null)
         val titleEdit = view.findViewById<EditText>(R.id.editTitle)
@@ -102,11 +111,10 @@ class ProviderServicesActivity : AppCompatActivity() {
         val locationEdit = view.findViewById<EditText>(R.id.editLocation)
         val phoneEdit = view.findViewById<EditText>(R.id.editPhone)
 
-        // Populate the edit fields with existing service data
         titleEdit.setText(service.title)
         descriptionEdit.setText(service.description)
-        maxPriceEdit.setText(service.maxPrice.toString())  // Ensure price is set correctly
-        minPriceEdit.setText(service.minPrice.toString())
+        maxPriceEdit.setText(service.maxPrice)
+        minPriceEdit.setText(service.minPrice)
         timeEdit.setText(service.availableTime)
         locationEdit.setText(service.location)
         phoneEdit.setText(service.phone)
@@ -115,7 +123,6 @@ class ProviderServicesActivity : AppCompatActivity() {
             .setTitle("Edit Service")
             .setView(view)
             .setPositiveButton("Update") { _, _ ->
-                // Collect updated data and create a new ProviderServiceModel
                 val updatedService = service.copy(
                     title = titleEdit.text.toString(),
                     description = descriptionEdit.text.toString(),
@@ -126,19 +133,24 @@ class ProviderServicesActivity : AppCompatActivity() {
                     phone = phoneEdit.text.toString()
                 )
 
-                // Update the service in Firebase
-                val targetProviderId = auth.currentUser?.uid // Get the logged-in user's UID
-                if (targetProviderId != null) {
-                    database.child(targetProviderId).child("servicelist").child(service.serviceId)
-                        .setValue(updatedService)
-                        .addOnSuccessListener {
-                            Toast.makeText(this, "Updated successfully", Toast.LENGTH_SHORT).show()
-                            loadServicesByProviderId()  // Reload the services after updating
-                        }
-                        .addOnFailureListener {
-                            Toast.makeText(this, "Failed to update", Toast.LENGTH_SHORT).show()
-                        }
+                if (currentUserId == null) {
+                    Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
                 }
+
+                val updates = hashMapOf<String, Any>(
+                    "/servicelist/${service.serviceId}" to updatedService,
+                    "/ServiceProviders/$currentUserId/servicelist/${service.serviceId}" to updatedService
+                )
+
+                database.reference.updateChildren(updates)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Updated successfully", Toast.LENGTH_SHORT).show()
+                        loadServicesByProviderId()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Failed to update", Toast.LENGTH_SHORT).show()
+                    }
             }
             .setNegativeButton("Cancel", null)
             .show()

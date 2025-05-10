@@ -65,7 +65,7 @@ class add_service : AppCompatActivity() {
             checkboxThursday, checkboxFriday, checkboxSaturday, checkboxSunday
         )
 
-        // Setup spinner items (you can change as needed)
+        // Setup spinner
         val categories = arrayOf("Plumber", "Electrician", "Cleaner", "Technician", "Other")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categories)
         categorySpinner.adapter = adapter
@@ -137,9 +137,28 @@ class add_service : AppCompatActivity() {
             .addOnSuccessListener {
                 Toast.makeText(this, "Service added successfully!", Toast.LENGTH_SHORT).show()
                 clearFields()
+
+                // Save under provider node too
+                saveServiceUnderProvider(uid, serviceId, serviceData)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Failed to add service", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun saveServiceUnderProvider(uid: String, serviceId: String, serviceData: Map<String, Any?>) {
+        val providerServiceRef = FirebaseDatabase.getInstance()
+            .getReference("ServiceProviders")
+            .child(uid)
+            .child("servicelist")
+            .child(serviceId)
+
+        providerServiceRef.setValue(serviceData)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Also saved under provider", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to save under provider", Toast.LENGTH_SHORT).show()
             }
     }
 
