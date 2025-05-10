@@ -23,8 +23,8 @@
             android:textSize="16sp"
             android:background="@drawable/edit_text_background"
             android:drawableLeft="@drawable/ic_title"
-          android:layout_marginBottom="12dp"
-         android:textColorHint="#757575" />
+            android:layout_marginBottom="12dp"
+            android:textColorHint="#757575" />
 
         <!-- Category -->
         <Spinner
@@ -49,8 +49,8 @@
             android:textSize="16sp"
             android:background="@drawable/edit_text_background"
             android:drawableTop="@drawable/ic_description"
-        android:layout_marginBottom="12dp"
-        android:textColorHint="#757575" />
+            android:layout_marginBottom="12dp"
+            android:textColorHint="#757575" />
 
         <!-- Price Range -->
         <LinearLayout
@@ -94,12 +94,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select Available Time"
+            android:background="@drawable/button_background"
             android:backgroundTint="#2196F3"
             android:textColor="#FFFFFF"
             android:layout_marginBottom="12dp"
             android:drawableLeft="@drawable/ic_time"
-        android:textSize="16sp"
-        android:padding="14dp" />
+            android:textSize="16sp"
+            android:padding="14dp" />
 
         <!-- Days Selection -->
         <TextView
@@ -111,21 +112,73 @@
             android:textColor="#212121"
             android:layout_marginBottom="8dp" />
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="12dp"
-            android:weightSum="7">
+            android:columnCount="4"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:rowCount="2"
+            android:layout_gravity="center">
 
-            <CheckBox android:id="@+id/checkboxMonday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Mon" android:textColor="#212121"/>
-            <CheckBox android:id="@+id/checkboxTuesday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Tue" android:textColor="#212121"/>
-            <CheckBox android:id="@+id/checkboxWednesday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Wed" android:textColor="#212121"/>
-            <CheckBox android:id="@+id/checkboxThursday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Thu" android:textColor="#212121"/>
-            <CheckBox android:id="@+id/checkboxFriday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Fri" android:textColor="#212121"/>
-            <CheckBox android:id="@+id/checkboxSaturday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sat" android:textColor="#212121"/>
-            <CheckBox android:id="@+id/checkboxSunday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sun" android:textColor="#212121"/>
-        </LinearLayout>
+            <CheckBox
+                android:id="@+id/checkboxMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/checkboxTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/checkboxWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wed"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/checkboxThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thu"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/checkboxFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fri"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/checkboxSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/checkboxSunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sun"
+                android:textColor="#212121"
+                android:gravity="center"/>
+
+        </GridLayout>
 
         <!-- Location -->
         <EditText
@@ -162,7 +215,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit Service"
-            android:backgroundTint="#4CAF50"
+            android:background="@drawable/button_background"
+            android:backgroundTint="#0078DE"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:padding="14dp"
