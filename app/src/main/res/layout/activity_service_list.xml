@@ -3,33 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#F9FAFB">
+    android:background="@color/backgroundColor">
 
     <!-- Filter Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="12dp"
-        android:background="@drawable/card_background"
-        android:elevation="4dp"
         android:padding="16dp"
-        android:layout_marginBottom="12dp"
-        android:clipToPadding="false"
-        android:layout_marginTop="8dp">
+        android:background="@drawable/card_background"
+        android:elevation="6dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:clipToPadding="false">
 
         <EditText
             android:id="@+id/editTextSearch"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Search by title"
+            android:layout_height="48dp"
+            android:hint="Search service title"
             android:drawableStart="@android:drawable/ic_menu_search"
-            android:padding="12dp"
+            android:drawablePadding="10dp"
             android:background="@drawable/edit_text_background"
-            android:textColor="#000000"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/textPrimary"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp"
-            android:drawablePadding="8dp" />
+            android:layout_marginBottom="16dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,8 +41,8 @@
             <Spinner
                 android:id="@+id/spinnerCategory"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="48dp"
+                android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/spinner_background"
                 android:paddingStart="12dp"
@@ -51,15 +51,16 @@
             <EditText
                 android:id="@+id/editTextLocation"
                 android:layout_width="0dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:hint="Enter location"
-                android:padding="12dp"
-                android:background="@drawable/edit_text_background"
-                android:textColor="#000000"
-                android:textSize="16sp"
                 android:drawableStart="@android:drawable/ic_menu_mylocation"
-                android:drawablePadding="8dp" />
+                android:drawablePadding="10dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@drawable/edit_text_background"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -69,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clipToPadding="false"
         android:paddingBottom="8dp"
+        android:clipToPadding="false"
         android:scrollbars="vertical" />
 </LinearLayout>
