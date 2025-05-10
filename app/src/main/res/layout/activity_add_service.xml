@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#F9FAFB">
+    android:background="#FAFAFA">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,17 +18,23 @@
             android:layout_height="wrap_content"
             android:hint="Service Title"
             android:inputType="textCapWords"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="14dp"
+            android:textColor="#212121"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp" />
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/ic_title"
+          android:layout_marginBottom="12dp"
+         android:textColorHint="#757575" />
 
         <!-- Category -->
         <Spinner
             android:id="@+id/spinnerCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#2196F3"
+            android:textColor="#212121"
+            android:textSize="16sp" />
 
         <!-- Description -->
         <EditText
@@ -38,10 +44,13 @@
             android:hint="Description"
             android:inputType="textMultiLine"
             android:gravity="top"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="14dp"
+            android:textColor="#212121"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp" />
+            android:background="@drawable/edit_text_background"
+            android:drawableTop="@drawable/ic_description"
+        android:layout_marginBottom="12dp"
+        android:textColorHint="#757575" />
 
         <!-- Price Range -->
         <LinearLayout
@@ -57,9 +66,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Min Price"
                 android:inputType="number"
-                android:padding="12dp"
-                android:background="@android:drawable/edit_text"
+                android:padding="14dp"
+                android:textColor="#212121"
                 android:textSize="16sp"
+                android:background="@drawable/edit_text_background"
+                android:drawableLeft="@drawable/ic_money"
                 android:layout_marginEnd="8dp" />
 
             <EditText
@@ -69,9 +80,12 @@
                 android:layout_height="wrap_content"
                 android:hint="Max Price"
                 android:inputType="number"
-                android:padding="12dp"
-                android:background="@android:drawable/edit_text"
-                android:textSize="16sp" />
+                android:padding="14dp"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:background="@drawable/edit_text_background"
+                android:drawableLeft="@drawable/ic_money"
+                android:textColorHint="#757575" />
         </LinearLayout>
 
         <!-- Availability Time -->
@@ -82,7 +96,10 @@
             android:text="Select Available Time"
             android:backgroundTint="#2196F3"
             android:textColor="#FFFFFF"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:drawableLeft="@drawable/ic_time"
+        android:textSize="16sp"
+        android:padding="14dp" />
 
         <!-- Days Selection -->
         <TextView
@@ -91,6 +108,7 @@
             android:text="Available Days:"
             android:textStyle="bold"
             android:textSize="16sp"
+            android:textColor="#212121"
             android:layout_marginBottom="8dp" />
 
         <LinearLayout
@@ -100,13 +118,13 @@
             android:layout_marginBottom="12dp"
             android:weightSum="7">
 
-            <CheckBox android:id="@+id/checkboxMonday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Mon" />
-            <CheckBox android:id="@+id/checkboxTuesday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Tue" />
-            <CheckBox android:id="@+id/checkboxWednesday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Wed" />
-            <CheckBox android:id="@+id/checkboxThursday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Thu" />
-            <CheckBox android:id="@+id/checkboxFriday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Fri" />
-            <CheckBox android:id="@+id/checkboxSaturday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sat" />
-            <CheckBox android:id="@+id/checkboxSunday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sun" />
+            <CheckBox android:id="@+id/checkboxMonday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Mon" android:textColor="#212121"/>
+            <CheckBox android:id="@+id/checkboxTuesday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Tue" android:textColor="#212121"/>
+            <CheckBox android:id="@+id/checkboxWednesday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Wed" android:textColor="#212121"/>
+            <CheckBox android:id="@+id/checkboxThursday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Thu" android:textColor="#212121"/>
+            <CheckBox android:id="@+id/checkboxFriday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Fri" android:textColor="#212121"/>
+            <CheckBox android:id="@+id/checkboxSaturday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sat" android:textColor="#212121"/>
+            <CheckBox android:id="@+id/checkboxSunday" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Sun" android:textColor="#212121"/>
         </LinearLayout>
 
         <!-- Location -->
@@ -115,10 +133,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Location"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="14dp"
+            android:textColor="#212121"
             android:textSize="16sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/ic_location"
+            android:textColorHint="#757575" />
 
         <!-- Contact Info -->
         <EditText
@@ -127,9 +148,12 @@
             android:layout_height="wrap_content"
             android:hint="Phone Number"
             android:inputType="phone"
-            android:padding="12dp"
-            android:background="@android:drawable/edit_text"
+            android:padding="14dp"
+            android:textColor="#212121"
             android:textSize="16sp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/ic_phone"
+            android:textColorHint="#757575"
             android:layout_marginBottom="24dp" />
 
         <!-- Submit -->
@@ -141,7 +165,7 @@
             android:backgroundTint="#4CAF50"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
-            android:padding="12dp" />
-
+            android:padding="14dp"
+            android:layout_marginBottom="12dp" />
     </LinearLayout>
 </ScrollView>

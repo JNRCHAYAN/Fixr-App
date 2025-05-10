@@ -71,7 +71,7 @@ class ServiceProviderHomeActivity : AppCompatActivity() {
 
         logoutButton.setOnClickListener {
             firebaseAuth.signOut()
-            val intent = Intent(this, service_provider_login::class.java)
+            val intent = Intent(this, after_flash::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
