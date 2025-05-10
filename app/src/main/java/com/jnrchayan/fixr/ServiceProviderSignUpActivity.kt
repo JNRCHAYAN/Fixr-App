@@ -78,7 +78,7 @@ class ServiceProviderSignUpActivity : AppCompatActivity() {
                         dbRef.child(it).setValue(serviceProvider).addOnCompleteListener { dbTask ->
                             if (dbTask.isSuccessful) {
                                 Toast.makeText(this, "Service Provider Signup Successful!", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this, mainhome::class.java)) // Navigate as needed
+                                startActivity(Intent(this, ServiceProviderHomeActivity::class.java)) // Navigate as needed
                                 finish()
                             } else {
                                 Toast.makeText(this, "DB Error: ${dbTask.exception?.message}", Toast.LENGTH_SHORT).show()
