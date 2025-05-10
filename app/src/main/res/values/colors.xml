@@ -27,6 +27,10 @@
     <color name="accentColor">#FFC107</color>
     <color name="textColor">#212121</color>
 
+    <color name="secondaryTextColor">#6e6e6e</color> <!-- Gray -->
+    <color name="tertiaryTextColor">#9e9e9e</color> <!-- Light Gray -->
+    <color name="primaryTextColor">#000000</color> <!-- Black -->
+
 
     <color name="primaryColor">#2F80ED</color>
     <color name="secondaryColor">#56CCF2</color>
