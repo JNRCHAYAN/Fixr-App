@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#F9F9F9">
+    android:background="#F5F5F5">
 
     <!-- Scrollable Content -->
     <ScrollView
@@ -24,21 +24,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Service Title"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:layout_marginBottom="16dp" />
+                android:textColor="#212121"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"/>
 
-            <!-- Reusable CardView Template -->
             <!-- Category -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="6dp"
+                android:layout_marginBottom="16dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="8dp"
                 android:backgroundTint="#FFFFFF">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,16 +49,17 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_menu_category"
-                        android:tint="#000000"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_marginEnd="12dp"
+                        card_view:tint="#2196F3" />
 
                     <TextView
                         android:id="@+id/tvCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Category: Home Repair"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textColor="#212121"
+                        android:textSize="16sp"
+                        android:gravity="center"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -67,11 +67,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="6dp"
+                android:layout_marginBottom="16dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="8dp"
                 android:backgroundTint="#FFFFFF">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,16 +82,16 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@android:drawable/ic_menu_mylocation"
-                        android:tint="#000000"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_marginEnd="12dp"
+                        card_view:tint="#2196F3" />
 
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Location: Dhaka, Bangladesh"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textColor="#212121"
+                        android:textSize="16sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -100,11 +99,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="6dp"
+                android:layout_marginBottom="16dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="8dp"
                 android:backgroundTint="#FFFFFF">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,16 +114,16 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@android:drawable/ic_menu_add"
-                        android:tint="#000000"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_marginEnd="12dp"
+                        card_view:tint="#2196F3" />
 
                     <TextView
                         android:id="@+id/tvPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Service Charge: $50 per visit"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textColor="#212121"
+                        android:textSize="16sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -133,11 +131,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="6dp"
+                android:layout_marginBottom="16dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="8dp"
                 android:backgroundTint="#FFFFFF">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,16 +146,16 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@android:drawable/ic_menu_today"
-                        android:tint="#000000"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_marginEnd="12dp"
+                        card_view:tint="#2196F3" />
 
                     <TextView
                         android:id="@+id/tvDays"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Available Days: Mon - Sat"
-                        android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textColor="#212121"
+                        android:textSize="16sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -166,11 +163,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="6dp"
+                android:layout_marginBottom="16dp"
+                card_view:cardCornerRadius="16dp"
+                card_view:cardElevation="8dp"
                 android:backgroundTint="#FFFFFF">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -182,11 +178,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Description:\nProfessional repair services for home electrical and plumbing systems. Reliable and affordable."
-                        android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textColor="#212121"
+                        android:textSize="16sp"
                         android:lineSpacingExtra="4dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 
@@ -195,15 +192,15 @@
         android:id="@+id/btnCall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#2196F3"
+        android:drawablePadding="8dp"
+        android:padding="16dp"
         android:text="📞  Call Now"
         android:textAllCaps="false"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:background="@drawable/edit_text_background"
-        android:textSize="18sp"
-        android:padding="16dp"
-        android:layout_marginTop="12dp"
-        android:drawablePadding="8dp"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 </RelativeLayout>
