@@ -186,3 +186,59 @@ Fixr/
 ├── README.md
 └── .gitignore
 ```
+
+---
+
+## 🗃️ Firebase Realtime Database Outer Structure
+
+```json
+{
+  "ServiceProviders": {
+    "{providerId}": {
+      "address": "",
+      "email": "",
+      "fullName": "",
+      "serviceType": "",
+      "username": "",
+      "servicelist": {
+        "{serviceId}": {
+          "availableDays": [],
+          "availableTime": "",
+          "category": "",
+          "description": "",
+          "location": "",
+          "maxPrice": "",
+          "minPrice": "",
+          "phone": "",
+          "providerId": "",
+          "serviceId": "",
+          "title": ""
+        }
+      }
+    }
+  },
+  "Users": {
+    "{userId}": {
+      "address": "",
+      "email": "",
+      "fullName": "",
+      "username": ""
+    }
+  },
+  "servicelist": {
+    "{serviceId}": {
+      "availableDays": [],
+      "availableTime": "",
+      "category": "",
+      "description": "",
+      "location": "",
+      "maxPrice": "",
+      "minPrice": "",
+      "phone": "",
+      "providerId": "",
+      "serviceId": "",
+      "title": ""
+    }
+  }
+}
+```
