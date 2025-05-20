@@ -1,79 +1,96 @@
-# 🔧 Fixr – Instant Help & Services
+# 🔧 Fixr – Instant Help & Services (Mobile App)
 
-Fixr is an Android-based service marketplace app that connects users with local service providers in real-time. Whether you need help from a plumber, electrician, cleaner, or technician, Fixr makes it quick and easy to find and contact service providers near you.
+A smart and easy-to-use Android app that connects users with local service providers for instant help. Built using Kotlin, XML, and Firebase, Fixr aims to simplify the way users request services like plumbing, electrical work, or home cleaning.
 
 ---
 
-## 💡 Key Features
+## 📘 Executive Summary
 
-### 👤 User Side
-- **Firebase Authentication** – Secure email/password sign-up and login.
-- **Browse Services** – View a categorized list of available services.
-- **Service Details** – Access detailed info including price, contact, and schedule.
-- **Call Directly** – One-tap calling to reach service providers.
-- **User Profile** *(Optional)* – View and edit your profile.
+Fixr enhances the user experience of connecting with local help through:
+- Clean and user-friendly design
+- Real-time Firebase integration
+- Separate flows for users and service providers
+- Direct calling and service detail views
 
-### 🧑‍🔧 Service Provider Side
-- **Firebase Auth Login** – Secure login for service providers.
-- **Provider Dashboard** – Easy access to manage services and settings.
-- **Add/Edit Services** – Add new services with title, description, price, contact.
-- **My Services Page** – View, update, and delete listed services.
-- **Settings Page** – Edit provider profile information.
+---
+
+## 🎯 Objectives
+
+- Help users easily discover nearby service providers
+- Let providers manage services with ease
+- Ensure real-time updates and fast interactions
+- Secure and scalable app structure
 
 ---
 
 ## ✅ Functional Requirements
 
 ### 👤 User Side
-- Sign up/login with Firebase Authentication
-- Password reset
-- Browse & filter service categories
-- View service details (title, price, contact)
-- One-tap call to provider
+- Email/password registration & login (Firebase)
+- Browse and search for services by category or location
+- View service details (provider name, contact, price)
+- One-tap call to providers
+- (Optional) View/Edit profile
 
 ### 🧑‍🔧 Provider Side
-- Login using Firebase Auth
-- Dashboard with navigation
-- Add new service (name, description, price, contact)
-- Manage own services (edit/delete)
-- Edit provider profile in settings
+- Login/Register via Firebase
+- Provider dashboard with Add, Edit, Delete service
+- Profile settings with editable business details
+- My Services list to view/manage listings
+
+### 🧾 Customer Management (Provider Feature)
+- Create and manage customer profiles
+- Generate and update service invoices
+- Save invoice history securely
 
 ---
 
-## 💻 Technical Requirements
+## 🔐 Non-functional Requirements
 
-- **Backend**:
-  - Firebase Authentication
-  - Firebase Realtime Database
-  - Firebase Rules for secure access
+- 🔐 Secure Firebase Authentication & Database Rules
+- ⚡ Real-time database access with Firebase
+- 📱 Responsive UI with fast navigation
+- ☁️ Scalability to thousands of users
+- 🔒 HTTPS encrypted communication
 
 ---
 
-## 🗂️ Database Structure (JSON Example)
+## 🧱 Architecture
+
+### 📂 Data-Centered Architecture
+- Central Firebase DB to store service, user, booking & invoice data
+
+### 🎛️ MVC Architecture
+- Model: Firebase interaction, data logic
+- View: User Interface using XML
+- Controller: Activity and Fragment control flows
+
+---
+
+## 📊 Database Structure
 
 ```json
 {
   "ServiceProviders": {
-    "{uid}": {
+    "uid123": {
       "name": "Provider Name",
-      "email": "example@mail.com",
-      "phone": "1234567890",
+      "email": "email@example.com",
+      "phone": "0123456789",
       "servicelist": {
-        "{serviceId}": {
-          "title": "Plumbing Help",
-          "description": "Fix pipe leaks and more",
-          "price": "200",
-          "contact": "1234567890"
+        "serviceId001": {
+          "title": "AC Repair",
+          "description": "Fix AC issues",
+          "price": "1000",
+          "contact": "0123456789"
         }
       }
     }
   },
   "Users": {
-    "{uid}": {
+    "uid456": {
       "fullName": "User Name",
-      "email": "user@mail.com",
-      "address": "User Address",
-      "username": "user123"
+      "email": "user@example.com",
+      "address": "Saidpur"
     }
   }
 }
@@ -81,94 +98,91 @@ Fixr is an Android-based service marketplace app that connects users with local 
 
 ---
 
-## 🎨 UI/UX Requirements
+## 🧪 Test Cases
 
-### Android Screens (Kotlin + XML)
+| ID      | Description                          | Expected Outcome                       |
+|---------|--------------------------------------|----------------------------------------|
+| UC-001  | User login validation                | Successful login                       |
+| UC-002  | Service provider registration        | Account created and saved in DB        |
+| UC-003  | Search and view service              | Relevant services displayed            |
+| UC-004  | Service booking (future scope)       | Booking saved and notified             |
+| UC-005  | Customer profile creation            | Profile saved and editable             |
+
+---
+
+## 🖥️ UI Screens
+
 - Splash Screen
-- Login & Signup Screen
-- User Home Page (List of Services)
-- Service Detail Page
-- Provider Home Page (with Drawer Navigation)
-- Add Service Page
-- My Services Page
-- Settings Page
-
-### UI Design Principles
-- ConstraintLayout for responsive UI
-- Material Design buttons, inputs, cards
-- DrawerLayout + NavigationView for provider dashboard
-- CardView for displaying services
-- Icons from Material or Android default set
+- Login & Signup
+- User Homepage (Service list)
+- Service Detail
+- Provider Dashboard (Drawer)
+- Add Service
+- My Services
+- Settings
 
 ---
 
-## 🧰 Tools & Libraries
+## 🛠️ Tools & Technologies
 
-| Tool/Library        | Purpose                              |
-|---------------------|--------------------------------------|
-| Android Studio      | Development Environment              |
-| Kotlin              | Primary Language                     |
-| XML                 | UI Layouts                           |
-| Firebase Auth       | Authentication                      |
-| Firebase Realtime DB| Data Storage                         |
-| Firebase Console    | Backend Management                   |
-| Glide/Coil *(opt.)* | Image Loading                        |
-| Jetpack Navigation *(opt.)* | Navigation between screens |
+| Tool / Tech     | Usage                                     |
+|-----------------|-------------------------------------------|
+| Kotlin          | Main programming language                 |
+| XML             | Layout design                             |
+| Firebase        | Authentication, Realtime DB               |
+| Android Studio  | Development IDE                           |
+| Figma           | UI/UX design prototype                    |
+| Firebase Rules  | Secure data access                        |
 
 ---
 
-## 📝 Optional Advanced Features (Future Updates)
+## 🧩 API Endpoints
 
-- ⭐ User ratings & reviews
-- 🗓️ Booking & scheduling
-- 🔔 Notifications using FCM
-- 📍 Google Maps integration
-- 🟢 Real-time service availability
-- 🛡️ Admin panel to monitor providers and services
-
----
-
-## 📸 Screenshots
-
-*(Add screenshots of the UI here in `/screenshots` folder)*
+- `/createServiceProviderAccount`
+- `/login`
+- `/searchService`
+- `/bookService`
+- `/createUserProfile`
+- `/updateServiceDetails`
 
 ---
 
-## 🙋‍♂️ Developer
+## 🚀 Future Features
 
-**Rohit**  
-Android Developer | Firebase Enthusiast
-
----
-
-## 📬 Contact
-
-📧 Email: your.email@example.com  
-🌐 GitHub: [github.com/yourusername](https://github.com/yourusername)
+- ⭐ Ratings & Reviews
+- 📅 Booking & Scheduling
+- 🔔 Push Notifications
+- 🗺️ Google Maps Integration
+- 🛡️ Admin Dashboard
 
 ---
 
-## 📁 Recommended GitHub Folder Structure
+## 👨‍💻 Team Member
+
+**Jogendra Nath Roy Chayan**  
+ID: 082310405101058  
+📧 jnrchayan@gmail.com  
+📱 01723193226  
+
+---
+
+## 📁 Suggested GitHub Structure
 
 ```
 Fixr/
 ├── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/yourcompany/fixr/
-│   │   │   │   ├── activities/
-│   │   │   │   ├── adapters/
-│   │   │   │   ├── models/
-│   │   │   │   ├── utils/
-│   │   │   │   └── firebase/
-│   │   │   └── res/
-│   │   │       ├── layout/
-│   │   │       ├── drawable/
-│   │   │       ├── values/
+│   └── src/main/java/com/fixr/
+│       ├── activities/
+│       ├── adapters/
+│       ├── firebase/
+│       ├── models/
+│       ├── utils/
+│   └── res/
+│       ├── layout/
+│       ├── drawable/
+│       ├── values/
 ├── screenshots/
-│   └── (UI preview images)
 ├── docs/
-│   └── database_structure.md
 ├── README.md
 └── .gitignore
 ```
