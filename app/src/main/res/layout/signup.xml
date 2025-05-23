@@ -6,11 +6,28 @@
     android:gravity="center"
     android:padding="24dp"
     android:background="@color/white">
+
+
+
+    <!-- App Logo -->
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="208dp"
         android:layout_height="229dp"
-        android:src="@drawable/fixr" />
+        android:src="@drawable/fixr"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Page Title -->
+    <TextView
+        android:id="@+id/signup_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Sign Up"
+        android:textColor="#1B5E20"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
     <!-- Name Field -->
     <EditText
         android:id="@+id/full_name"
@@ -22,7 +39,7 @@
         android:textColorHint="#757575"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
-        android:background="@drawable/edittext_bg"/>
+        android:background="@drawable/edittext_bg" />
 
     <!-- Username Field -->
     <EditText
@@ -35,7 +52,7 @@
         android:textColorHint="#757575"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
-        android:background="@drawable/edittext_bg"/>
+        android:background="@drawable/edittext_bg" />
 
     <!-- Password Field -->
     <EditText
@@ -48,8 +65,7 @@
         android:textColorHint="#757575"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
-        android:background="@drawable/edittext_bg"
-        />
+        android:background="@drawable/edittext_bg" />
 
     <!-- Email Field -->
     <EditText
@@ -62,8 +78,7 @@
         android:textColorHint="#757575"
         android:layout_marginBottom="16dp"
         android:padding="12dp"
-        android:background="@drawable/edittext_bg"
-        />
+        android:background="@drawable/edittext_bg" />
 
     <!-- Address Field -->
     <EditText
@@ -76,8 +91,7 @@
         android:textColorHint="#757575"
         android:layout_marginBottom="32dp"
         android:padding="12dp"
-        android:background="@drawable/edittext_bg"
-        />
+        android:background="@drawable/edittext_bg" />
 
     <!-- Signup Button -->
     <Button
@@ -88,7 +102,7 @@
         android:textColor="@color/white"
         android:background="@drawable/button_bg"
         android:padding="14dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <!-- Login Link -->
     <TextView
