@@ -14,14 +14,29 @@ Fixr enhances the user experience of connecting with local help through:
 
 ---
 
-## 🎯 Objectives
+## 🛠️ How to Run
 
-- Help users easily discover nearby service providers
-- Let providers manage services with ease
-- Ensure real-time updates and fast interactions
-- Secure and scalable app structure
+1. Clone the repository or import the source code into Android Studio.
+2. Add your `google-services.json` file (from Firebase console).
+3. Sync Gradle and build the project.
+4. Connect your device/emulator and run the app.
+5. Log in or register to start using the app!
 
----
+
+
+## 🔧 Minimum Requirements
+
+- Android 6.0 (Marshmallow) or higher
+- Android Studio (Arctic Fox or above)
+- Firebase Project with:
+  - Authentication (Email/Password)
+  - Realtime Database
+  - `google-services.json` file added to the app
+- 2GB RAM Device or Emulator
+- Active Internet Connection
+
+
+
 
 ## ✅ Functional Requirements
 
