@@ -146,26 +146,6 @@ Fixr enhances the user experience of connecting with local help through:
 📱 01723193226  
 ---
 
-## 📁 Suggested GitHub Structure
-
-```
-Fixr/
-├── app/
-│   └── src/main/java/com/fixr/
-│       ├── activities/
-│       ├── adapters/
-│       ├── firebase/
-│       ├── models/
-│       ├── utils/
-│   └── res/
-│       ├── layout/
-│       ├── drawable/
-│       ├── values/
-├── screenshots/
-├── docs/
-├── README.md
-└── .gitignore
-```
 
 ---
 
