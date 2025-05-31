@@ -60,28 +60,6 @@ Fixr enhances the user experience of connecting with local help through:
 
 ---
 
-## 🔐 Non-functional Requirements
-
-- 🔐 Secure Firebase Authentication & Database Rules
-- ⚡ Real-time database access with Firebase
-- 📱 Responsive UI with fast navigation
-- ☁️ Scalability to thousands of users
-- 🔒 HTTPS encrypted communication
-
----
-
-## 🧱 Architecture
-
-### 📂 Data-Centered Architecture
-- Central Firebase DB to store service, user, booking & invoice data
-
-### 🎛️ MVC Architecture
-- Model: Firebase interaction, data logic
-- View: User Interface using XML
-- Controller: Activity and Fragment control flows
-
----
-
 ## 📊 Database Structure
 
 ```json
@@ -149,18 +127,7 @@ Fixr enhances the user experience of connecting with local help through:
 | Figma           | UI/UX design prototype                    |
 | Firebase Rules  | Secure data access                        |
 
----
 
-## 🧩 API Endpoints
-
-- `/createServiceProviderAccount`
-- `/login`
-- `/searchService`
-- `/bookService`
-- `/createUserProfile`
-- `/updateServiceDetails`
-
----
 
 ## 🚀 Future Features
 
@@ -175,10 +142,8 @@ Fixr enhances the user experience of connecting with local help through:
 ## 👨‍💻 Team Member
 
 **Jogendra Nath Roy Chayan**  
-ID: 082310405101058  
 📧 jnrchayan@gmail.com  
 📱 01723193226  
-
 ---
 
 ## 📁 Suggested GitHub Structure
